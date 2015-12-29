@@ -18,8 +18,7 @@ while True:
                 #如果密码正确，登录成功并退出程序
                 if PassWd == name_list[1]:
                     print('登录成功！')
-                    break
-                   # sys(exit(1))
+                    sys(exit(1))
                 #如果密码错误，提示
                 else:
                     print('密码错误，请重试！')
