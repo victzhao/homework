@@ -7,13 +7,14 @@ while True:
     read_f = open('account.txt','r')
     name = input('请输入您的用户名：').strip()
     read_lock_file = open('account-clock.txt','r')
+    UserOfLockList = []
     for i in read_lock_file:
-        if name not in i:
-            break
-        else:
-            print('您的帐号已锁定！')
-            break
+       UserOfLockList.append(i.strip())
     read_lock_file.close()
+
+    if name in UserOfLockList:
+        print('该账户已经锁定')
+        continue
     #循环帐号列表并匹配账户是否存在
     for i in read_f:
         #分割每行的帐号信息，取出帐号列
