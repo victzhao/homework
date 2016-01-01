@@ -71,6 +71,9 @@ while True:
             break
         elif Num == 'b':
             continue
+        else:
+            print('请输入合法的字符串！')
+            continue
     else:
         Num = int(Num)
         if Num > num:
@@ -92,6 +95,9 @@ while True:
                         sys(exit(0))
                     elif CountryNum == 'b':
                         break
+                    else:
+                        print('请输入合法的字符串！')
+                        continue
                 else:
                     CountryNum = int(CountryNum)
                     if CountryNum > NumCountry:
