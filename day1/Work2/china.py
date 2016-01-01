@@ -58,8 +58,7 @@ def check_input(args):
 
 province_dic = GetProvinceDic()
 nu_province = GetProvinceOfNu(province_dic)
-step = 1
-while step == 1:
+while True:
     for num in sorted(nu_province):
         print('%s:   %s' %(num,nu_province[num]))
     print('*'* 100)
@@ -80,8 +79,7 @@ while step == 1:
         else:
             province = (nu_province[int(Num)])
             Country_dic = GetCountryOfNu(province_dic,province)
-            step = 2
-            while step == 2:
+            while True:
 
                 for NumCountry in Country_dic.keys():
                     print('%s:  %s' %(NumCountry,Country_dic[NumCountry]))
