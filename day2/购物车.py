@@ -49,7 +49,7 @@ def main():
     while True:
         AllMoney = input('\033[;31m请输入您的所有积蓄：\033[0m')
         check_result = check_input(AllMoney)
-        if check_result == 1:
+        if check_result == 1:#表示用户输入的不是数字
             print('请输入正确的数字！！！')
         else:
             break
@@ -59,10 +59,10 @@ def main():
     while True:
         #删除购物车中商品数量为0的商品
         a = [] #定义空列表来存放数量为0 的商品名称
-        for k,v in ShoppingCartDic.items():
+        for k,v in ShoppingCartDic.items():#循环购物车字典，取出数量为0的商品存入列表a中
             if v == 0:
                 a.append(k)
-        for b in a:
+        for b in a:#循环列表中的商品名称，删除字典中的key值
             ShoppingCartDic.pop(b)
 
         #打印商品列表
@@ -165,10 +165,6 @@ def main():
                             ShoppingCartDic[ShoppingName] = ShoppingCartDic[ShoppingName]+1
                         print('\033[;33m*\033[0m'*80)
                         print('您本次选择的商品为\033[;31m%s\033[0m,您的最新余额为\033[;31m%s\033[0m' %(ShoppingName,AllMoney))
-    #                     print('''您的购物车商品如下：
-    # 商品名称\t商品数量''')
-    #                     for k,v in ShoppingCartDic.items():
-    #                         print('%s\t\t\t%s' %(k,v))
                     else:
                         print('您的余额不足！')
                         continue
