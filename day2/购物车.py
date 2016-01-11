@@ -92,10 +92,10 @@ def main():
             while deleting == 0:
                 #打印购物车商品，和编号供用户选择
                 ShoppingCart = ShowShoppingCart(ShoppingCartDic)
-                DleteShoppingNum = input('请输入您要删除的商品编号,或者输入q返回上级菜单:')
+                DleteShoppingNum = input('请输入您要删除的商品编号,或者输入b返回上级菜单:')
                 #检查输入，如果输入的非数字，给出提示。
                 if check_input(DleteShoppingNum) == 1:
-                    if DleteShoppingNum == 'q':
+                    if DleteShoppingNum == 'b':
                         deleting = 1
                     else:
                         print('请输入q或者正确的商品编号,按任意键继续:')
@@ -106,12 +106,15 @@ def main():
                     if int(DleteShoppingNum) <= len(ShoppingCartDic):
                         #输入的编号存在，则继续输入删除的商品数量
                         while True:
-                            DleteShoppingCount = input('请输入您要删除的商品数量:')
+                            DleteShoppingCount = input('请输入您要删除的商品数量,或者按b返回上级菜单:')
                             #判断输入的如果不是数字，给出提示
                             if check_input(DleteShoppingCount) == 1:
-                                print('请输入正确的数字,按任意键继续:')
-                                input()
-                                continue
+                                if DleteShoppingCount == 'b':
+                                    break
+                                else:
+                                    print('请输入正确的数字,按任意键继续:')
+                                    input()
+                                    continue
                             else:
                                 #判断输入的商品数量是否超过实际数量
                                 if int(DleteShoppingCount) <= ShoppingCartDic[ShoppingCart[int(DleteShoppingNum)]]:
