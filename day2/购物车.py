@@ -98,7 +98,7 @@ def main():
                     if DleteShoppingNum == 'b':
                         deleting = 1
                     else:
-                        print('请输入q或者正确的商品编号,按任意键继续:')
+                        print('请输入b或者正确的商品编号,按任意键继续:')
                         input()
                         continue
                 else:
@@ -112,7 +112,7 @@ def main():
                                 if DleteShoppingCount == 'b':
                                     break
                                 else:
-                                    print('请输入正确的数字,按任意键继续:')
+                                    print('请输入b或者正确的商品数量,按任意键继续:')
                                     input()
                                     continue
                             else:
