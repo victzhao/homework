@@ -28,7 +28,7 @@ def ShowTable():
     print('\033[41;33m编号\t商品\t价格\033[0m')
     for k,v in sorted(ShoppingList.items()):
         Num+=1
-        print('\033[42;34m%s\t\t%s\t%s\033[0m' %(Num,k,v))
+        print('\033[42;34m%s\t\t%s\t￥%s\033[0m' %(Num,k,v))
         ShoppingDic[Num] = k
     print('\033[;35m*\033[0m'*80)
     return ShoppingDic
@@ -73,7 +73,7 @@ def main():
         if Opthons == 'q':
             break
         elif Opthons == 'c':
-            print('您的当前余额为\033[;31m%s\033[0m' %AllMoney)
+            print('您的当前余额为:\033[;31m￥%s\033[0m' %AllMoney)
         elif Opthons == 's':
             print('\033[;32m*\033[0m'*80)
             print('''您的购物车商品如下：
@@ -129,7 +129,7 @@ def main():
                                     break
                                 else:
                                     print('请输入正确的商品数量！')
-                                    break
+                                    continue
                     else:
                         print('请输入正确的商品编号！')
                         continue
