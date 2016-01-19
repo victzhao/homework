@@ -31,3 +31,4 @@ backend www.oldboy.org
 backend test.oldboy.org
         server 100.1.7.9 100.1.7.9 weight 20 maxconn 3000
         server 100.1.7.9 100.1.7.999 weight 20 maxconn 3000
+        server 1.1.1.1 1.1.1.1 weitht 20 maxconn 30
