@@ -101,10 +101,10 @@ def main(args):
     r3 = remove_sub(r2)
     # #计算加减
     r4 = compute_and_sub(r3)
-    print(r4)
+    print('本次计算结果为：%s' %r4)
 
 if __name__ == '__main__':
     expression = input('''类似这样的格式，您可以直接copy此表达式计算：'1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )'
 请输入您的表达式：
 ''')
-    main(expression)
+    result = main(expression)
