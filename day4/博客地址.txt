@@ -1,0 +1,11 @@
+python之路(二)-collections系列   http://www.cnblogs.com/zhaojianbo/p/5137231.html
+python之路(三)-深浅拷贝          http://www.cnblogs.com/zhaojianbo/p/5137026.html
+python之路(四)-set集合           http://www.cnblogs.com/zhaojianbo/p/5140836.html
+python之路(五)-文件操作          http://www.cnblogs.com/zhaojianbo/p/5140586.html
+python之路(六)-函数相关          http://www.cnblogs.com/zhaojianbo/p/5139585.html
+python之路(七)-递归算法          http://www.cnblogs.com/zhaojianbo/p/5156939.html
+python之路(八)-迭代器&生成器     http://www.cnblogs.com/zhaojianbo/p/5156953.html
+python之路(九)-函数装饰器        http://www.cnblogs.com/zhaojianbo/p/5156958.html
+python之路(十)-正则表达式        http://www.cnblogs.com/zhaojianbo/p/5156964.html
+
+
