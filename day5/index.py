@@ -14,19 +14,21 @@ while True:
 3   信用卡账户管理
 4   ATM取款
 5   信用卡还款
+6   账户转账
 
 ''')
+    set.price()
     option = input('请输入功能代码：')
     if option == '1':
-        set.price()
         set.main()
     elif option == '2':
-        pass
+        creditop.pay()
     elif option == '3':
         creditop.creditaccoun()
     elif option == '4':
         pass
     elif option == '5':
         pass
+
     elif option == '0':
         sys.exit('退出系统')

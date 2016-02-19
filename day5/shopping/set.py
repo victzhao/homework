@@ -133,15 +133,15 @@ def  main():
             print('\033[;32m*\033[0m'*80)
             input('按任意键继续！')
         elif Opthons == 'a':
-            order = {}
-            for items in ShoppingCartDic.keys():
-                order[items] = [ShoppingCartDic[items],ShoppingList[items]]
-
-            order_dic = json.dumps(order)
-            print(order_dic)
+            # order = {}
+            # for items in ShoppingCartDic.keys():
+            #     order[items] = [ShoppingCartDic[items],ShoppingList[items]]
+            #
+            # order_dic = json.dumps(order)
+            # print(order_dic)
+            ShoppingCartDic_str=json.dumps(ShoppingCartDic)
             with open('shopping/order.txt','w') as order_file:
-                order_file.write(order_dic)
-            print(order)
+                order_file.write(ShoppingCartDic_str)
 
 
 

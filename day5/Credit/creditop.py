@@ -8,6 +8,8 @@ userdic = {
 		leifeng:{'password':'112233','amount':'2000','userstatus':'on','loginstatus':'y'}
 }
 '''
+
+
 #信用卡账户管理函数
 def creditaccoun():
     #获取用户字典
@@ -34,7 +36,6 @@ def creditaccoun():
             else:
                 print('输入错误！')
                 continue
-        print('aaaaaaaaaaaaaaaaaa')
         write_file(users)
 
     #修改额度
@@ -154,15 +155,77 @@ def creditaccoun():
 
 
 
+#信用卡账户登陆函数
+def credit_login():
+    with open('Credit/account','r') as user_i:
+        user_info = user_i.read()
+        if user_info:
+            user_info_dic = json.loads(user_info)
+            loggeds = '0'
+            while loggeds == '0':
+                credit_name = input('输入您的信用卡帐号：')
+                if credit_name in user_info_dic.keys() and user_info_dic[credit_name]['userstatus'] == 'on':
+                    for i in range(3):
+                        passwd = input('输入密码：')
+                        if passwd == user_info_dic[credit_name]['password']:
+                            print('登录成功')
+                            loggeds = '1'
+                            break
+                        else:
+                            print('密码错误！')
+                            continue
+                    else:
+                        print('密码登陆错误次数操过三次，将锁定账户')
+                        user_info_dic[credit_name]['userstatus'] = 'off'
+                        user_info_str = json.dumps(user_info_dic)
+                        with open('Credit/account','w') as wf:
+                            wf.write(user_info_str)
+                        continue
+                else:
+                    print('您的帐号不存在,或已被锁定！')
+                    continue
+        else:
+            print('系统内没有任何账户信息，请确认您的信用卡是否开通！')
+#信用卡还款账户登陆装饰器函数
+def wrapper(func):
+    def inner():
+        credit_login()
+        func()
+    return inner
 
 
-#信用卡用户登陆
-def login():
-    pass
 
 #结算功能
-def pay(args):
-    pass
+@wrapper
+def pay():
+    #取出商品单价用来计算
+    with open('shopping/obj_price.txt','r') as p_obj:
+        prcie_dic = json.loads(p_obj.read())
+    #计算业务订单总金额
+    with open('shopping/order.txt','r') as r_order:
+        orders = r_order.read()
+        if orders:
+            orders_dic = json.loads(orders)
+            total = 0
+            for m,n in orders_dic.items():
+                prices = int(n)*int(prcie_dic[m])
+                total+=prices
+            print(total)
+            #开始还款
+            with open('Credit/account','r') as f_credit:
+                credit_dic = json.loads(f_credit.read())
+                new_amount = int(credit_dic['zhaojianbo']['amount'])-total
+                credit_dic['zhaojianbo']['amount'] = str(new_amount)
+            credit_str = json.dumps(credit_dic)
+            with open('Credit/account','w') as w_credit:
+                 w_credit.write(credit_str)
+            print('结算完成')
+
+
+
+        else:
+            print('订单为空，请去商城完成购物！')
+
 
 #提现
 def drawmoney():

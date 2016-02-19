@@ -1,6 +1,1 @@
-{
-"zhaojianbo": {"password": "112233", "userstatus": "off", "amount": "100", "loginstatus": "y"},
-"lipo": {"password": "112233", "userstatus": "off", "amount": "200", "loginstatus": "y"}
-
-
-}
+{"zhaojianbo": {"amount": "399962", "password": "112233", "loginstatus": "y", "userstatus": "on"}}
