@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-#!/usr/bin/env python
+#!/usr/core/env python
 # -*- coding:utf-8 -*-
 __author__ = '赵建波'
 '''
