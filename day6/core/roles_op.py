@@ -2,14 +2,28 @@
 
 
 class common_role(object):
-    def __init__(self,name,age,life,sex):
+    def __init__(self,name,age,life):
         self.name = name
         self.life = life
         self.age = age
-        self.sex = sex
 
 
 class monkey(common_role):
-    def __init__(self,name,age,life,sex,jump):
-        super(monkey,self).__init__(name,age,life,sex)
-        self.jump = jump
+    def __init__(self,name,age,life,role):
+        super(monkey,self).__init__(name,age,life)
+        self.role = role
+    def jump(self):
+        print('一个跟头十万八千里！')
+
+class zhu(common_role):
+    def __init__(self,name,age,life,role):
+        super(monkey,self).__init__(name,age,life)
+        self.role = role
+    def speaking(self):
+        print('猴儿哥！')
+class sha(common_role):
+    def __init__(self,name,age,life,role):
+        super(monkey,self).__init__(name,age,life)
+        self.role = role
+    def talking(self):
+        print('二师兄，师傅呢？')
