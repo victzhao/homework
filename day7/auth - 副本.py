@@ -42,9 +42,9 @@ class ftp() :
         sk.listen(5)
 
         print('欢迎进入ftp系统！')
-        conn,addr = sk.accept()
-        self.conn = conn
-        self.addr = addr
+        # conn,addr = sk.accept()
+        # self.conn = conn
+        # self.addr = addr
 
     def close(self):
         self.conn.close()
@@ -60,6 +60,7 @@ class ftp() :
         logs = logger()
         while True:
 
+            self.conn,self.addr = self.sk.accept()
             username = str(self.conn.recv(1024), 'utf8')
             if username in userinfo.keys():
                 self.conn.sendall(bytes('请输入%s的密码:' %username, 'utf8'))
@@ -69,8 +70,6 @@ class ftp() :
                     msg = '%s-%s-%s-登陆成功' %(self.addr[0],self.addr[1],username,)
                     logs.info(msg)
                     self.conn.sendall(bytes('登录成功', 'utf8'))
-                    return True
-
                 else:
                     msg = '%s-%s-%s-密码错误' %(self.addr[0],self.addr[1],username,)
                     logs.info(msg)
@@ -79,17 +78,6 @@ class ftp() :
                 msg = '%s-%s-%s-用户名不存在' %(self.addr[0],self.addr[1],username,)
                 logs.info(msg)
                 self.conn.sendall(bytes('0', 'utf8'))
-    def cmd(self):
-        while True:
-            cmd_client = str(self.conn.recv(1024),'utf8')
-            if not len(cmd_client):
-                break
-            cmd_result = subprocess.Popen(cmd_client,shell=True, stdout=subprocess.PIPE)
-            cmd_result = cmd_result.stdout.read()
-            print(bool(cmd_result))
-            if not cmd_result:
-                self.conn.sendall(bytes('Null','utf8'))
-            self.conn.sendall(cmd_result)
     def put(self):
         pass
     def get(self):
@@ -100,9 +88,6 @@ class ftp() :
 if __name__ == '__main__':
     servers = ftp('127.0.0.1','9999')
     servers.listen()
-    loginstatus = servers.login()
-    if loginstatus:
-        servers.cmd()
-
+    servers.login()
 
 
