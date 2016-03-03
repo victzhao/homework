@@ -1,12 +1,17 @@
 
 import socket
 from public import method
+import sys,os
 ip_port = ('127.0.0.1',9999)
 
 sk = socket.socket()
 sk.connect(ip_port)
 
 islogin = 0
+print('''欢迎登陆ftp系统！
+
+
+''')
 while True:
 
     while islogin == 0:
@@ -28,13 +33,26 @@ while True:
             print(result_login)
     while True:
         cmd = input('ftp:')
-        if not len(cmd):continue
+        #获取要上传或者下载的文件名
+        cmd_split = cmd.split(' ')
+        #发送命令到服务端
         sk.sendall(bytes(cmd,'utf8'))
-        cmd_result = str(sk.recv(1024))
-        if str(cmd_result) == 'Null':
-            print('命令错误或者无返回结果')
-            continue
-        print(cmd_result)
+        #判断操作是上传还是下载
+        if cmd.startswith('put'):
+            sk.recv(1024)
+            file_name = cmd_split[1]
+            if os.path.exists(file_name):
+                file_size = os.path.getsize(file_name)
+                file_info = '%s:%s' %(file_name,file_size)
+                sk.send(bytes(file_info,'utf8'))
+                with open(file_name,'r') as send_file:
+                    for i in send_file.read():
+                        sk.sendall(bytes(i,'utf8'))
+
+
+        elif cmd.startswith('get'):
+            pass
+
 
 
 

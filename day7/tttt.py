@@ -2,7 +2,15 @@
 
 import subprocess
 cmd_client = 'pwd'
-cmd_result = subprocess.Popen(cmd_client,shell=True, stdout=subprocess.PIPE)
-cmd_result = cmd_result.stdout.read()
-print(cmd_result)
-print(bool(cmd_result))
+
+
+
+import sys
+import os
+
+
+with open('data_send/put.txt','r') as rf:
+    for i in rf:
+        print(len(i))
+        i += i
+    print(len(i))
