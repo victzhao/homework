@@ -8,9 +8,18 @@ sk = socket.socket()
 sk.connect(ip_port)
 
 islogin = 0
-print('''欢迎登陆ftp系统！
-
-
+print('''------------------------------------------------------------------------------------------
+                欢迎登陆ftp系统！
+------------------------------------------------------------------------------------------
+                        ###########################
+                        #   登陆用户名    密码     #
+                        #   tom           tom123  #
+                        #   jack          jack123 #
+                        ###########################
+使用方法：
+    put path/filename         #上传文件put和文件路径之间一个空格隔开
+    get path/filename         #下载文件get和文件路径之间一个空格隔开
+------------------------------------------------------------------------------------------
 ''')
 while True:
 
@@ -45,9 +54,10 @@ while True:
                 file_size = os.path.getsize(file_name)
                 file_info = '%s:%s' %(file_name,file_size)
                 sk.send(bytes(file_info,'utf8'))
-                with open(file_name,'r') as send_file:
-                    for i in send_file.read():
-                        sk.sendall(bytes(i,'utf8'))
+                with open(file_name,'rb') as send_file:
+                    for i in send_file:
+                        sk.sendall(i)
+
 
 
         elif cmd.startswith('get'):

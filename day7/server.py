@@ -56,20 +56,31 @@ class ftp() :
                         client_data = str(self.conn.recv(1024),'utf8')
                         if client_data.startswith('put'):
                             self.conn.send(bytes('Ready to put!','utf8'))
+                            #接收文件名和文件大小
                             file_info = str(self.conn.recv(1024),'utf8')
                             file_info = file_info.split(':')
-                            print(file_info)
                             file_name = file_info[0].split('/')[-1]
                             file_size = file_info[1]
-                            print(file_name)
-                            print(file_size)
-                            with open('data_rec/%s/%s' %(username,file_name),'a') as write_file:
-                                received_size = 0
+                            received_size = 0
+                            rec_path  = userinfo[username][1]
+                            rec_file = '%s%s' %(rec_path,file_name)
+                            #判断是否已经存在文件名
+                            if os.path.exists(rec_file): #文件已经存在则断点续传
+                                pass
+                            else:
                                 while received_size < int(file_size):
-                                    data = str(self.conn.recv(500),'utf8')
-                                    write_file.write(data)
-                                    self.conn.send(b'ack')
-                                    received_size += len(data)
+                                    with open('data_rec/%s/%s' %(username,file_name),'ab') as write_file:
+
+                                        data = self.conn.recv(500)
+    #                                    sdata = str(data,'utf8')
+
+                                        write_file.write(data)
+                                        #self.conn.send(b'ack')
+                                        received_size += len(data)
+                                else:
+                                    #print('文件传输完毕')
+                                    msg = '%s-%s-%s-%s-上传完成' %(self.addr[0],self.addr[1],username,file_name)
+                                    logs.info(msg)
 
 
 

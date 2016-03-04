@@ -8,9 +8,10 @@ cmd_client = 'pwd'
 import sys
 import os
 
-
-with open('data_send/put.txt','r') as rf:
-    for i in rf:
-        print(len(i))
-        i += i
-    print(len(i))
+a = 1.1
+b = 4.2
+print('%'+ str(int(a/b*100)))
+c = "%.2f" %(a/b)
+d = float(c)*100
+print(c)
+print(d)
