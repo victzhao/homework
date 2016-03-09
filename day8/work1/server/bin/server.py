@@ -1,22 +1,21 @@
 
 
-import socketserver
+import socketserver,subprocess
 import os,sys,json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 from conf import setting
 from logs import log
-def test():
 
-    print(setting.ip)
 
 class ftpserver(socketserver.BaseRequestHandler):
     def handle(self):
         # while True:
         #j接收客户端发来的数据
-        recv_data = str(self.request.recv(1024),'utf8')
-        #把数据交给handle_data处理
-        self.handle_data(recv_data)
+        while True:
+            recv_data = str(self.request.recv(1024),'utf8')
+            #把数据交给handle_data处理
+            self.handle_data(recv_data)
 
     def handle_data(self,recv_data):
         if not recv_data.split('|'): #如果没数据收到程序退出
@@ -28,11 +27,11 @@ class ftpserver(socketserver.BaseRequestHandler):
 
             #转换收到的消息为str
             recv_str = str(recv_data)
-            print(recv_str.split("|")[0])
+            print(recv_str)
             #判断收到的消息类型
-            if recv_str.split("|")[0] == 'auth':#如果以auth开头则为认证信息，则做认证处理
-                print('收到用户消息')
+            if recv_str.split('|')[0] == 'auth':#如果以auth开头则为认证信息，则做认证处理
                 username = recv_str.split("|")[1]
+                self.username= username
                 password = recv_str.split("|")[2]
                 with open('user/user_info.db','r') as rf:
                     for i in rf:
@@ -41,23 +40,49 @@ class ftpserver(socketserver.BaseRequestHandler):
                             if password == user_info[username]['passwd']:
                                 user_send = 'auth|True'
                                 self.request.send(bytes(user_send,'utf8'))
-                                print('登陆成功')
-                                break
+                                #记录日志
+                                msg = '%s登录成功 ' %(username)
+                                logss =  log.logger()
+                                logss.info(msg)
+                                return
                             else:
                                 user_send = "auth|False"
                                 self.request.send(bytes(user_send,'utf8'))
-                                print('密码错误')
+                                msg = '密码错误 '
+                                logs =  log.logger()
+                                logs.info(msg)
                                 break
                         else:
 
                             continue
                     else:
-                        print('用户名不存在')
+                        msg = '用户名%s不存在 ' %(username)
+                        logs =  log.logger()
+                        logs.info(msg)
                         user_send = "auth|False"
                         self.request.send(bytes(user_send,'utf8'))
 
 
-            else:
+            elif recv_str.split('|')[0] == 'put': #如果以put开头则上传文件
+                print('putting')
+                self.request.send(b"ReadyToPut")
+                recv_size = 0
+                file_name = recv_str.split('|')[1].split('/')[-1]
+                while recv_size < int(recv_str.split('|')[2]):
+                    with open('user/%s/%s'%(self.username,file_name),'ab') as recv_file:
+                        data = self.request.recv(500)
+                        recv_file.write(data)
+                        recv_size += len(data)
+                else:
+                    print('文件上传完成！')
+                    return
+
+
+
+
+            elif recv_str.split('|')[0] == 'get': #如果以get开头则下载文件
+                pass
+            else:#其他的则执行命令
                 pass
 
 
@@ -73,8 +98,5 @@ def start():
     proc = socketserver.ThreadingTCPServer(ip_port, ftpserver)
     proc.serve_forever()
 
-def auth():
-    pass
-def trans():
-    pass
+
 
