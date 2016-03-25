@@ -100,14 +100,11 @@ class ftp_client(object):
         data = 'put|%s|%s|%s' %(file_name,file_size,file_md5)
         self.sock.sendall(bytes(data,'utf8'))
         ack = str(self.sock.recv(1024),'utf8')
-        print(ack)
         #确认消息后开始发送文件
         if ack == 'ReadyToPut':
-            with open(file_name,'rb',encoding= 'gbk') as put_file:
-                for i in put_file:
-                    self.sock.sendall(i)
-
-
+            with open(file_name,'rb',encoding='gb18030') as put_file:
+                for i in put_file.readlines():
+                    self.sock.sendall(i.decode("utf-8"))
     def command(self, args):
         pass
 

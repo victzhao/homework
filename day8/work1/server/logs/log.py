@@ -1,5 +1,5 @@
 import logging
-def logger():
+def logger(msg):
         logs = logging.getLogger('Ftplog')
         logs.setLevel(logging.INFO)
         #bin to file
@@ -13,4 +13,6 @@ def logger():
         logconsole.setFormatter(formaters)
         logs.addHandler( logfile )
         logs.addHandler(logconsole)
-        return logs
+        logs.info(msg)
+        logs.removeHandler(logfile)
+        logs.removeHandler(logconsole)

@@ -10,11 +10,12 @@ from logs import log
 
 class ftpserver(socketserver.BaseRequestHandler):
     def handle(self):
-        # while True:
-        #j接收客户端发来的数据
         while True:
+            #j接收客户端发来的数据
+            #while True:
             recv_data = str(self.request.recv(1024),'utf8')
             #把数据交给handle_data处理
+            print(recv_data)
             self.handle_data(recv_data)
 
     def handle_data(self,recv_data):
@@ -42,15 +43,14 @@ class ftpserver(socketserver.BaseRequestHandler):
                                 self.request.send(bytes(user_send,'utf8'))
                                 #记录日志
                                 msg = '%s登录成功 ' %(username)
-                                logss =  log.logger()
-                                logss.info(msg)
+                                log.logger(msg)
+                                #logss.info(msg)
                                 return
                             else:
                                 user_send = "auth|False"
                                 self.request.send(bytes(user_send,'utf8'))
                                 msg = '密码错误 '
-                                logs =  log.logger()
-                                logs.info(msg)
+                                log.logger(msg)
                                 break
                         else:
 
@@ -71,6 +71,7 @@ class ftpserver(socketserver.BaseRequestHandler):
                 while recv_size < int(recv_str.split('|')[2]):
                     with open('user/%s/%s'%(self.username,file_name),'ab') as recv_file:
                         data = self.request.recv(500)
+                        print(data)
                         recv_file.write(data)
                         recv_size += len(data)
                 else:
