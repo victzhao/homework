@@ -1,0 +1,32 @@
+/*公共开始*/
+
+
+.left{
+   background-color: white;
+   float: left;
+   width: 20%;
+   height:500px;
+
+}
+.right{
+   background-color: darkgray;
+   float: left;
+   width: 80%;
+   height:5000px;
+}
+.title{
+
+    height: 50px;
+    background-color: rgba(156, 167, 182, 0.9);
+    line-height: 50px;
+}
+.body{
+    background-color: white;
+
+}
+.hide{
+    display: none;
+}
+menu{
+    margin:3px;
+}
