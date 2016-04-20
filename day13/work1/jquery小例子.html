@@ -12,7 +12,7 @@
         </div>
         <div class="left" >
             <div class="menu">
-                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">菜单一</div>
+                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">作业说明</div>
                 <div class="body hide">
                     <div>作业1 jquery文档学习</div>
                     <div>作业2 武老师博客里的例子看看</div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="menu">
-                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">菜单二</div>
+                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">作业一</div>
                 <div class="body hide">
                     <div>2.1</div>
                     <div>2.2</div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="menu">
-                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">菜单三</div>
+                <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">作业二</div>
                 <div class="body hide">
                     <div>3.1</div>
                     <div>3.2</div>
@@ -59,15 +59,16 @@
         </div>
 
         <div class="right">
-            <div id="edit1" style="background-color: #912851; width: 250px; height:150px;position: fixed; bottom: 50%; top: 50%; right: 50%; left: 50%; display: none" >
+            <form id="edit1" style="background-color: white; width: 260px; height:180px;position: fixed; bottom: 50%; top: 50%; right: 50%; left: 50%; display: none" >
                 <p>主机名:<input  type="text" name="主机名:" /></p>
                 <p>IP地址:<input  type="text" name="IP地址:" /></p>
                 <p>端口号:<input  type="text" name="端口号:" /></p>
                 <div style="width: 400px; height: 10px ;">
                     <input  type="button" value="保存" onclick="save(this);" />
+                    <input  type="button" value="重置" onclick="cleaning();" />
                     <input  type="button" value="取消" onclick="cancle(this);"/>
                 </div>
-            </div>
+            </form>
 
             <div>
                 <table border="1">
@@ -119,6 +120,11 @@
         function toStart(ths){
             $(ths).css("background-color","");
         }
+        function cleaning () {
+            $("#edit1").children().filter(":eq(0)").find("input").val("");
+            $("#edit1").children().filter(":eq(1)").find("input").val("");
+            $("#edit1").children().filter(":eq(2)").find("input").val("");
+        }
         function edit(ths){
             $(ths).parent().parent().attr("id","table")
             $("#edit1").css("display","");
@@ -133,9 +139,24 @@
             var host=$(ths).parent().siblings().filter(":eq(0)").find("input").val();
             var ip=$(ths).parent().siblings().filter(":eq(1)").find("input").val();
             var port=$(ths).parent().siblings().filter(":eq(2)").find("input").val();
-            $("#table").children().filter(":eq(0)").text(host);
-            $("#table").children().filter(":eq(1)").text(ip);
-            $("#table").children().filter(":eq(2)").text(port);
+            if ( host ){
+                $("#table").children().filter(":eq(0)").text(host);
+            }else{
+                return false
+            }
+            if (ip){
+                $("#table").children().filter(":eq(1)").text(ip);
+            }else {
+                return false
+            }
+            if (port){
+                $("#table").children().filter(":eq(2)").text(port);
+            }else{
+                return false
+            }
+
+
+
             $("#table").attr("id","")
             $("#edit1").css("display","none");
 
