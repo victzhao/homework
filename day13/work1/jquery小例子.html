@@ -23,10 +23,7 @@
             <div class="menu">
                 <div class="title" onmouseout="toStart(this);" onmouseover="toRed(this);" onclick="removedisplay(this);">作业一</div>
                 <div class="body hide">
-                    <div>2.1</div>
-                    <div>2.2</div>
-                    <div>2.3</div>
-                    <div>2.4</div>
+                    <div onclick="work1();">作业效果</div>
                 </div>
             </div>
             <div class="menu">
@@ -58,51 +55,53 @@
             </div>
         </div>
 
-        <div class="right">
-            <form id="edit1" style="background-color: white; width: 260px; height:180px;position: fixed; bottom: 50%; top: 50%; right: 50%; left: 50%; display: none" >
-                <p>主机名:<input  type="text" name="主机名:" /></p>
-                <p>IP地址:<input  type="text" name="IP地址:" /></p>
-                <p>端口号:<input  type="text" name="端口号:" /></p>
-                <div style="width: 400px; height: 10px ;">
-                    <input  type="button" value="保存" onclick="save(this);" />
-                    <input  type="button" value="重置" onclick="cleaning();" />
-                    <input  type="button" value="取消" onclick="cancle(this);"/>
+        <div class="right" >
+            <div style="display: none;" id="work1" >
+                <div class="second-side" style="display: none" >背景</div>
+                <form id="edit1" class="input_floors" style="display: none">
+                    <p>主机名:<input  type="text" name="主机名:" /></p>
+                    <p>IP地址:<input  type="text" name="IP地址:" /></p>
+                    <p>端口号:<input  type="text" name="端口号:" /></p>
+                    <div style="width: 400px; height: 10px ;">
+                        <input  type="button" value="保存" onclick="save(this);" />
+                        <input  type="button" value="重置" onclick="cleaning();" />
+                        <input  type="button" value="取消" onclick="cancle(this);"/>
+                    </div>
+                </form>
+                <div>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>主机名</th>
+                                <th>IP地址</th>
+                                <th>端口</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>host1.oldboy.me</td>
+                                <td>192.168.100.10</td>
+                                <td>22</td>
+                                <td>
+                                    <input type="button"  value="编辑" onclick="edit(this);"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>host2.oldboy.me</td>
+                                <td>192.168.100.11</td>
+                                <td>22</td>
+                                <td><input type="button"  value="编辑" onclick="edit(this);" /></td>
+                            </tr>
+                            <tr>
+                                <td>host3.oldboy.me</td>
+                                <td>192.168.100.12</td>
+                                <td>22</td>
+                                <td><input type="button"  value="编辑" onclick="edit(this);" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </form>
-
-            <div>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>主机名</th>
-                            <th>IP地址</th>
-                            <th>端口</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>host1.oldboy.me</td>
-                            <td>192.168.100.10</td>
-                            <td>22</td>
-                            <td>
-                                <input type="button"  value="编辑" onclick="edit(this);"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>host2.oldboy.me</td>
-                            <td>192.168.100.11</td>
-                            <td>22</td>
-                            <td><input type="button"  value="编辑" onclick="edit(this);" /></td>
-                        </tr>
-                        <tr>
-                            <td>host3.oldboy.me</td>
-                            <td>192.168.100.12</td>
-                            <td>22</td>
-                            <td><input type="button"  value="编辑" onclick="edit(this);" /></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -128,6 +127,7 @@
         function edit(ths){
             $(ths).parent().parent().attr("id","table")
             $("#edit1").css("display","");
+            $(".second-side").css("display","");
             var first=$(ths).parent().siblings().filter(":eq(0)").text();
             var second=$(ths).parent().siblings().filter(":eq(1)").text();
             var third=$(ths).parent().siblings().filter(":eq(2)").text();
@@ -142,29 +142,37 @@
             if ( host ){
                 $("#table").children().filter(":eq(0)").text(host);
             }else{
-                return false
+                $(ths).parent().siblings().filter(":eq(0)").find("input").css("border-color","red");
             }
             if (ip){
                 $("#table").children().filter(":eq(1)").text(ip);
+
             }else {
-                return false
+                $(ths).parent().siblings().filter(":eq(1)").find("input").css("border-color","red");
             }
             if (port){
                 $("#table").children().filter(":eq(2)").text(port);
             }else{
-                return false
+                $(ths).parent().siblings().filter(":eq(2)").find("input").css("border-color","red");
             }
+            if ( host && ip && port){
+                $(".second-side").css("display","none");
+                $("#table").attr("id","");
+                $("#edit1").css("display","none");
 
-
-
-            $("#table").attr("id","")
-            $("#edit1").css("display","none");
-
+            }
 
         }
         function cancle(ths){
             $("#edit1").css("display","none");
+            $(".second-side").css("display","none");
+            $(ths).parent().siblings().filter(":eq(0)").find("input").css("border-color","");
+            $(ths).parent().siblings().filter(":eq(1)").find("input").css("border-color","");
+            $(ths).parent().siblings().filter(":eq(2)").find("input").css("border-color","");
 
+        }
+        function work1(){
+            $("#work1").css("display","")
         }
     </script>
 </body>
