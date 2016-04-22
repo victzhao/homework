@@ -45,6 +45,13 @@
     z-index:110; background-color: rgba(134, 139, 107, 0.73); width: 260px; height:150px;position: absolute; bottom: 95%; top: 5%; right: 60%; left: 40%;
     padding: 20px;
 }
+.table{
+    background-color: white;
+    border-color: #060306;
+}
+.line{
+    border-color: #337ab7;
+}
 
 
 
