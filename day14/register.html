@@ -2,9 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户注册</title>
+    <link href="css/register.css" rel="stylesheet" />
+    <link href="css/commons.css" rel="stylesheet" />
 </head>
 <body>
+    <div >
+        <div class="daohang">
+            <div style="float: left;width: 200px;">&nbsp;</div>
+            <div style="float: left;">收藏本站</div>
+            <div style="float: left;width: 700px;">&nbsp;</div>
+            <div>
+                <a href="login.html" target="_blank">登录</a>
+                <a>免费注册</a>
+                <a>我的订单</a>
+                <a>联系客服</a>
+            </div>
+
+        </div>
+        <div class="up" >
+            <div style="float: left;width: 200px;">&nbsp;</div>
+            <a style="float: left; " href="http://www.etiantian.org" target="_blank"><img src="img/logo_small.png" /></a>
+        </div>
+        <div >
+            <div style="float: left;width: 200px;">&nbsp;</div>
+            <div style="border: solid #b3b3b3 1px; float: left;height: 500px; width: 800px;background-color: rgba(13, 61, 188, 0.56);">
+                <div style="margin: 50px;font-size: 30px;">新用户注册</div>
+                <div id="echo" style="margin-left: 50px;margin-top: 20px;">
+                    <div class="option">
+                        <span style="color: #ff1122">*</span>
+                        <span class="left-side">用&nbsp;&nbsp;户&nbsp;&nbsp;名:</span>
+                        <span>
+                            <input class="input-font" type="text" value="您的账户名和登录名"/>
+                        </span>
+                    </div>
+                    <div class="option" >
+                        <span style="color: #ff1122">*</span>
+                        <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号:</span>
+                        <span>
+                            <input class="input-font" type="text" value="建议使用常用手机"/>
+                        </span>
+                    </div>
+                    <div class="option">
+                        <span style="color: #ff1122">*</span>
+                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</span>
+                        <span>
+                            <input class="input-font" type="text" value="建议至少两种字符组合"/>
+                        </span>
+                    </div>
+                    <div class="option">
+                        <span style="color: #ff1122">*</span>
+                        <span>确认密码:</span>
+                        <span>
+                            <input class="input-font" type="text" value="请再次输入密码"/>
+                        </span>
+                    </div>
+                    <div class="option">
+                            <input type="checkbox" />
+                        </span>
+                        <span >
+                            我已阅读并同意《老男孩用户协议》
+                        </span>
+                    </div>
+                    <div class="option ">
+                        <input style="width:250px;" class="blue button" type="button" value="注册用户" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/jquery-2.2.3.js"></script>
+    <script>
+        //处理输入框焦点变化
+        $(function(){
+            $("#echo div span input:eq(0)").focusin(function(){
+                if ($("#echo div span input:eq(0)").val()=="您的账户名和登录名"){
+                    $("#echo div span input:eq(0)").val("")
+                };
+            });
+            $("#echo div span input:eq(0)").focusout(function(){
+                if ($("#echo div span input:eq(0)").val()==""){
+                    $("#echo div span input:eq(0)").val("您的账户名和登录名")
+                };
+            });
+            $("#echo div span input:eq(1)").focusin(function(){
+                if ($("#echo div span input:eq(1)").val()=="建议使用常用手机"){
+                    $("#echo div span input:eq(1)").val("")
+                };
+            });
+            $("#echo div span input:eq(1)").focusout(function(){
+                if ($("#echo div span input:eq(1)").val()==""){
+                    $("#echo div span input:eq(1)").val("建议使用常用手机")
+                };
+            });
+            $("#echo div span input:eq(2)").focusin(function(){
+                if ($("#echo div span input:eq(2)").val()=="建议至少两种字符组合"){
+                    $("#echo div span input:eq(2)").val("")
+                    $("#echo div span input:eq(2)").attr("type","password")
+                };
+            });
+            $("#echo div span input:eq(2)").focusout(function(){
+                if ($("#echo div span input:eq(2)").val()==""){
+                    $("#echo div span input:eq(2)").val("建议至少两种字符组合")
+                    $("#echo div span input:eq(2)").attr("type","text")
+                };
+            });
+            $("#echo div span input:eq(3)").focusin(function(){
+                if ($("#echo div span input:eq(3)").val()=="请再次输入密码"){
+                    $("#echo div span input:eq(3)").val("")
+                    $("#echo div span input:eq(3)").attr("type","password")
+                };
+            });
+            $("#echo div span input:eq(3)").focusout(function(){
+                if ($("#echo div span input:eq(3)").val()==""){
+                    $("#echo div span input:eq(3)").val("请再次输入密码")
+                    $("#echo div span input:eq(3)").attr("type","text")
+                };
+            });
+        });
+        //监测数据内容是否符合要求
+        $(function(){
+            $("#echo div span input")
+        });
+
+    </script>
 
 </body>
 </html>
