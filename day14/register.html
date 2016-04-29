@@ -35,12 +35,20 @@
                         <span>
                             <input class="input-font" type="text" value="您的账户名和登录名"/>
                         </span>
+                        <span class="hide">
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red" >用户名不能为空</span>
+                        </span>
                     </div>
                     <div class="option" >
                         <span style="color: #ff1122">*</span>
                         <span>手&nbsp;&nbsp;机&nbsp;&nbsp;号:</span>
                         <span>
                             <input class="input-font" type="text" value="建议使用常用手机"/>
+                        </span>
+                        <span class="hide">
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red" >手机号不能为空</span>
                         </span>
                     </div>
                     <div class="option">
@@ -49,6 +57,10 @@
                         <span>
                             <input class="input-font" type="text" value="建议至少两种字符组合"/>
                         </span>
+                        <span class="hide">
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red" >密码不能为空</span>
+                        </span>
                     </div>
                     <div class="option">
                         <span style="color: #ff1122">*</span>
@@ -56,16 +68,31 @@
                         <span>
                             <input class="input-font" type="text" value="请再次输入密码"/>
                         </span>
+                        <span class="hide">
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red" >请再次输入密码</span>
+                        </span>
+                        <span id="diff" class="hide">
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red" >两次输入的密码不一致</span>
+                        </span>
                     </div>
-                    <div class="option">
+                    <div class="option" style="margin-bottom: 30px;">
+                        <span>
                             <input type="checkbox" />
                         </span>
                         <span >
                             我已阅读并同意《老男孩用户协议》
                         </span>
+                        <span style="" class="hide">
+                            &nbsp;
+                            <img src="img/warning.png" />
+                            <span style="font-size: 15px;color: red;"  >请先阅读用户协议</span>
+                        </span>
                     </div>
+
                     <div class="option ">
-                        <input style="width:250px;" class="blue button" type="button" value="注册用户" />
+                        <input id="regi" style="width:250px;" class="blue button" type="button" value="注册用户" />
                     </div>
                 </div>
             </div>
@@ -123,7 +150,57 @@
         });
         //监测数据内容是否符合要求
         $(function(){
-            $("#echo div span input")
+
+            $("#regi").click(function(){
+                if ($("#echo div span input:eq(0)").val() == "您的账户名和登录名") {
+                    $("#echo div span input:eq(0)").addClass("waring");
+                    $("#echo div span input:eq(0)").parent().next().removeClass("hide")
+                }else{
+                    $("#echo div span input:eq(0)").removeClass("waring");
+                    $("#echo div span input:eq(0)").parent().next().addClass("hide")
+                }
+            });
+
+            $("#regi").click(function(){
+                if ($("#echo div span input:eq(1)").val() == "建议使用常用手机") {
+                    $("#echo div span input:eq(1)").addClass("waring");
+                    $("#echo div span input:eq(1)").parent().next().removeClass("hide")
+                }else{
+                    $("#echo div span input:eq(1)").removeClass("waring");
+                    $("#echo div span input:eq(1)").parent().next().addClass("hide")
+                };
+            });
+
+            $("#regi").click(function(){
+                if ($("#echo div span input:eq(2)").val() == "建议至少两种字符组合") {
+                    $("#echo div span input:eq(2)").addClass("waring");
+                    $("#echo div span input:eq(2)").parent().next().removeClass("hide");
+                }else{
+                    $("#echo div span input:eq(2)").removeClass("waring");
+                    $("#echo div span input:eq(2)").parent().next().addClass("hide")
+                };
+            });
+
+            $("#regi").click(function(){
+                if ($("#echo div span input:eq(3)").val() == "请再次输入密码") {
+                    $("#echo div span input:eq(3)").addClass("waring");
+                    $("#echo div span input:eq(3)").parent().next().removeClass("hide");
+                }else if ($("#echo div span input:eq(2)").val() !== $("#echo div span input:eq(3)").val()) {
+                    $("#echo div span input:eq(2)").addClass("waring");
+                    $("#echo div span input:eq(3)").addClass("waring");
+                    $("#diff").removeClass("hide");
+                }else{
+                    $("#echo div span input:eq(3)").removeClass("waring");
+                    $("#echo div span input:eq(3)").parent().next().addClass("hide")
+                    $("#diff").addClass("hide");
+                };
+                if (!$("#echo div span input[type=checkbox]").prop("checked")){
+                    $("#echo div span input[type=checkbox]").parent().siblings().last().removeClass("hide")
+                }else{
+                    $("#echo div span input[type=checkbox]").parent().siblings().last().addClass("hide")
+                };
+            });
+
         });
 
     </script>
