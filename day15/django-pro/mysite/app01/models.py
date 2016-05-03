@@ -9,3 +9,8 @@ class userinfo(models.Model):
     password= models.CharField(max_length=30)
     phone=models.IntegerField()
 
+
+class hostinfo(models.Model):
+    pass
+
+

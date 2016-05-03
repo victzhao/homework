@@ -1,0 +1,25 @@
+.left{
+    float: left;
+    width: 20%;height:600px;
+    background-color: white;
+    border: solid 1px rgba(88, 131, 182, 0.19)
+}
+.right{
+    float: left;width: 80%;
+    height: 600px;
+    background-color: white;
+    border: solid 1px #9ca7b6;
+}
+.tabletop{
+    background-color: rgba(120, 128, 255, 0.49);
+    border-radius: 2px;
+}
+.select{
+    margin: 5px;
+
+}
+.hover:hover{
+    color: red;
+    content: "编辑";
+    visibility: visible;
+}

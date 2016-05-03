@@ -99,3 +99,10 @@ body {
 .hide{
     display: none;
 }
+.clearfixed:after{
+    content: ".";
+    visibility: hidden;
+    display: block;
+    clear: both;
+
+}
