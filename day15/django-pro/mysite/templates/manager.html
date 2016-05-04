@@ -11,18 +11,18 @@
 <body>
     <div>
         <div class="up " style="border: solid 1px #9ca7b6">
-            <a href="http://www.etiantian.org" target="_blank"><img src="/static/img/logo_small.png" /></a>
+            <a href="http://www.etiantian.org" target="_blank"><img src="/static/img/logo_03.png" /></a>
         </div>
         <div class="left">
             <ul class="nav nav-pills nav-stacked">
 
-                <li role="presentation">
+                <li role="presentation" class="active">
                     <a href="#">
                         <span  class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
                         &nbsp;&nbsp;主机管理
                     </a>
                 </li>
-                <li role="presentation" class="active">
+                <li role="presentation" >
 
                     <a href="#">
                         <span  class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -44,15 +44,18 @@
 
             </ul>
         </div>
+
         <div class="right">
+            <!--透明层-->
+            <div class="second-side hide" >透明层</div>
             <div id ="hosts_m" class=""  >
                 <div class="select " >
-                    <input  class="btn btn-success" type="button" value="添加" />
-                    <input  class="btn btn-success" type="button" value="全选" />
-                    <input  class="btn btn-success" type="button" value="全不选" />
-                    <input  class="btn btn-success" type="button" value="反选" />
-                    <input  class="btn btn-success" type="button" value="编辑模式" />
-                    <input  class="btn btn-success" type="button" value="保存" />
+                    <input onclick="addMode()" class="btn btn-success" type="button" value="添加" />
+                    <input onclick="SelectAll();" class="btn btn-success" type="button" value="全选" />
+                    <input onclick="SelectNo();" class="btn btn-success" type="button" value="全不选" />
+                    <input onclick="SelectSide();" class="btn btn-success" type="button" value="反选" />
+                    <input onclick="editMode(this);" class="btn btn-success" type="button" value="编辑模式" />
+                    <input onclick="Save(this);" class="btn btn-success" type="button" value="保存" />
                     <input  class="btn btn-danger" type="button" value="删除" />
                 </div>
                 <div class="tabletop ">
@@ -327,6 +330,23 @@
 
 
 
+            </div>
+            <!--添加按钮弹出框-->
+            <div>
+                <form action="/manager/" method="post" id="add" class="input_floors hide">
+                    <p style="text-align: right">主机名:<input type="text" name="hostname"></p>
+                    <p style="text-align: right">IP地址:<input type="text" name="ip"></p>
+                    <p style="text-align: right">端口号:<input type="text" name="port"></p>
+                    <p style="text-align: right">CPU:<input type="text" name="cpu"></p>
+                    <p style="text-align: right">内存:<input type="text" name="mem"></p>
+                    <p style="text-align: right">硬盘:<input type="text" name="disk"></p>
+                    <p style="text-align: right">状态:<input type="text" name="status"></p>
+                    <div style="width: 400px; height: 10px ;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  class="btn btn-success" type="submit"  value="保存" onclick="return saveRecord();">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="btn btn-success" type="button"  value="重置" onclick="cleaning();">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="btn btn-success" type="button"  value="取消" onclick="cancle(this);">
+                    </div>
+                </form>
             </div>
         </div>
 

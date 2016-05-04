@@ -36,4 +36,17 @@ def register(request):
 
 #后台管理系统
 def manager(request):
+    if request.method=="POST":
+        input_hostname=request.POST["hostname"]
+        input_ip=request.POST["ip"]
+        input_port=request.POST["port"]
+        input_cpu=request.POST["cpu"]
+        input_mem=request.POST["mem"]
+        input_disk=request.POST["disk"]
+        input_status=request.POST["status"]
+        models.hostinfo.objects.create(hostname=input_hostname,ip=input_ip,port=input_port,cpu=input_cpu,mem=input_mem,disk=input_disk,status=input_status)
+
+
+
+
     return render(request, "manager.html")

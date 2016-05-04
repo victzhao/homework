@@ -11,6 +11,13 @@ class userinfo(models.Model):
 
 
 class hostinfo(models.Model):
-    pass
+    hostname = models.CharField(max_length=30)
+    ip = models.CharField(max_length=30)
+    port = models.IntegerField()
+    cpu = models.CharField(max_length=30)
+    mem = models.CharField(max_length=30)
+    disk = models.CharField(max_length=30)
+    status = models.CharField(max_length=10)
+
 
 
