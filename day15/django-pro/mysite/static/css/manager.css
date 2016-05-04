@@ -1,13 +1,13 @@
 .left{
     float: left;
-    width: 20%;height:600px;
+    width: 10%;height:100%;
     background-color: white;
     border: solid 1px rgba(88, 131, 182, 0.19);
 
 }
 .right{
-    float: left;width: 80%;
-    height: 600px;
+    float: left;width: 90%;
+    height: auto;
     background-color: white;
     border: solid 1px #9ca7b6;
 }

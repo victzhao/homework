@@ -39,7 +39,21 @@ function SelectSide(){
 //编辑模式
 function editMode(ths){
     $(ths).css("background-color","red")
-    console.log("edit")
+    $(".tabletop input:checkbox ").each(function(){
+        if ($(this).prop("checked")){
+            console.log("checked")
+            $(this).siblings().each(function(){
+                console.log($(this).text())
+                console.log("yes")
+                if ($(this).text()){
+                    var inner="<input  type='text' value=" + $(this).text() + ">";
+                    $(this).text("")
+                    $(this).append(inner)
+                    console.log("ok")
+                }
+            })
+        }
+    })
 }
 
 //保存

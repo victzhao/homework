@@ -48,5 +48,5 @@ def manager(request):
 
 
 
-
-    return render(request, "manager.html")
+    host_info_list = models.hostinfo.objects.all()
+    return render(request, "manager.html",{"host_info_list": host_info_list})
