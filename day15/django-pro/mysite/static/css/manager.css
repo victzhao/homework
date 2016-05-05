@@ -32,19 +32,26 @@
   height: 100%;
   background-color: #434874;
   z-index: 100;
-  opacity: 0.35;
+  opacity: 0.6;
 }
 
 
 .input_floors {
+  border-radius: 5px;
   z-index: 110;
   background-color: rgb(55, 90, 145);
-  width: 260px;
-  height: 320px;
+  width: 500px;
+  height: 400px;
   position: absolute;
   bottom: 60%;
   top: 40%;
-  right: 50%;
-  left: 50%;
-  padding: 20px;
+  right: 60%;
+  left: 40%;
+  padding-top: 50px;
+  padding-right: 150px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+.editing{
+    background-color: red !important;
 }

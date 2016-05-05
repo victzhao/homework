@@ -37,6 +37,25 @@
                 </li>
                 <li role="presentation">
                     <a href="#">
+                        <span  class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                        &nbsp;&nbsp;网络设备
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        &nbsp;&nbsp;域名解析
+                    </a>
+                </li>
+                <li role="presentation"  >
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        &nbsp;&nbsp;备案管理
+                    </a>
+                </li>
+
+                <li role="presentation">
+                    <a href="#">
                         <span  class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                         &nbsp;&nbsp;消息中心
                     </a>
@@ -55,14 +74,14 @@
                     <input onclick="SelectAll();" class="btn btn-success" type="button" value="全选" />
                     <input onclick="SelectNo();" class="btn btn-success" type="button" value="全不选" />
                     <input onclick="SelectSide();" class="btn btn-success" type="button" value="反选" />
-                    <input onclick="editMode(this);" class="btn btn-success" type="button" value="编辑模式" />
+                    <input id="edit" onclick="editMode(this);" class="btn btn-success" type="button" value="编辑" />
                     <input onclick="Save(this);" class="btn btn-success" type="button" value="保存" />
                     <input  class="btn btn-danger" type="button" value="删除" />
                 </div>
                 <div class="tabletop ">
                     <table border="0" class="table table-bordered table-hover active" >
                         <thead>
-                            <tr style="background-color: #0095cd">
+                            <tr  style="background-color: #0095cd">
                                 <th>选择</th>
                                 <th>主机名</th>
                                 <th>ip</th>
@@ -77,17 +96,20 @@
                         <tbody>
                             {% for line in host_info_list %}
                                 <tr>
-                                    <td><input name="line3" type="checkbox" /></td>
-                                    <td>{{ line.hostname }}</td>
-                                    <td>{{ line.ip }}</td>
-                                    <td>{{ line.port }}</td>
-                                    <td>{{ line.cpu }}</td>
-                                    <td>{{ line.mem }}</td>
-                                    <td>{{ line.disk }}</td>
-                                    <td>{{ line.status }}</td>
+                                    <td >
+                                        <input name="line3" type="checkbox" onclick="SelectBox(this);" />
+                                    </td>
+                                    <td edit-enable="true">{{ line.hostname }}</td>
+                                    <td edit-enable="true">{{ line.ip }}</td>
+                                    <td edit-enable="true">{{ line.port }}</td>
+                                    <td edit-enable="true">{{ line.cpu }}</td>
+                                    <td edit-enable="true">{{ line.mem }}</td>
+                                    <td edit-enable="true">{{ line.disk }}</td>
+                                    <td edit-enable="true">{{ line.status }}</td>
+
                                     <td>
-                                        <span  class="glyphicon glyphicon-edit hover" aria-hidden="true"></span>
-                                        <span  class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        <span onclick="singleEdit(this);" class="glyphicon glyphicon-edit hover" aria-hidden="true"></span>
+                                        <span onclick="singleDelete(this);" class="glyphicon glyphicon-trash hover" aria-hidden="true"></span>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -113,7 +135,8 @@
                     <p style="text-align: right">内存:<input type="text" name="mem"></p>
                     <p style="text-align: right">硬盘:<input type="text" name="disk"></p>
                     <p style="text-align: right">状态:<input type="text" name="status"></p>
-                    <div style="width: 400px; height: 10px ;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div style="width: 400px; height: 10px ;text-align: center;padding-top: 20px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input  class="btn btn-success" type="submit"  value="保存" onclick="return saveRecord();">&nbsp;&nbsp;&nbsp;&nbsp;
                         <input class="btn btn-success" type="button"  value="重置" onclick="cleaning();">&nbsp;&nbsp;&nbsp;&nbsp;
                         <input class="btn btn-success" type="button"  value="取消" onclick="cancle(this);">
