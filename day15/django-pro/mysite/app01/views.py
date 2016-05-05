@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse,redirect
 from app01 import models
-
+import json
 
 # Create your views here.
 
@@ -47,6 +47,22 @@ def manager(request):
         models.hostinfo.objects.create(hostname=input_hostname,ip=input_ip,port=input_port,cpu=input_cpu,mem=input_mem,disk=input_disk,status=input_status)
 
 
-
     host_info_list = models.hostinfo.objects.all()
     return render(request, "manager.html",{"host_info_list": host_info_list})
+
+
+def save_data(request):
+    if request.method == "POST":
+        ret = {"status": True, "error": ""}
+        try:
+            RecData = json.loads(request.POST["data"])
+            for i in RecData:
+                dataId = int(i["id"])
+                models.hostinfo.objects.filter(id=dataId).update(hostname=i["hostname"], ip=i["ip"], port=i["port"], cpu=i["cpu"], mem=i["mem"], disk=i["disk"], status=i["status"])
+
+        except Exception as e:
+            ret["status"] = False
+            ret["error"] = str(e)
+
+        # return HttpResponse("ok")
+        return HttpResponse(json.dumps(ret))

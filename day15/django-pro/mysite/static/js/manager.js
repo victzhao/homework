@@ -118,14 +118,62 @@ function editMode(ths){
 //保存
 function Save(ths){
     if($(ths).prev().hasClass("editing")){
+        var modifiedData=[];
+        //为每个input标签加入name属性
+        $(".tabletop input:checkbox ").each(function(){
+            if ($(this).prop("checked")){
+                var foundAll=$(this).parent().siblings().children("input")
+                var id = $(this).parent().siblings().first().text()
+                $(foundAll).eq(0).attr("name","hostname")
+                $(foundAll).eq(1).attr("name","ip")
+                $(foundAll).eq(2).attr("name","port")
+                $(foundAll).eq(3).attr("name","cpu")
+                $(foundAll).eq(4).attr("name","mem")
+                $(foundAll).eq(5).attr("name","disk")
+                $(foundAll).eq(6).attr("name","status")
+                HostDic = {"hostname":$(foundAll).eq(0).val(),"ip":$(foundAll).eq(1).val(), "port":$(foundAll).eq(2).val(),"cpu":$(foundAll).eq(3).val(),"mem":$(foundAll).eq(4).val(),"disk":$(foundAll).eq(5).val(),"status":$(foundAll).eq(6).val(),"id":id }
+                modifiedData.push(HostDic)
+
+
+                //开始获取数据
+
+            };
+
+        });
+
+        $.ajax({
+            url:"/save_data/",
+            type:"POST",
+            tradition:true,
+            data: {data:JSON.stringify(modifiedData)},
+            success:function(arg){
+                var callback= $.parseJSON(arg);
+                if (callback.status){
+                    alert("成功");
+                }else{
+                    alert(callback.error);
+                }
+            }
+        });
+        //加入name属性完成
+
+
+
+
+
+
+
         $(ths).prev().removeClass("editing");
         $(".tabletop input:checkbox ").each(function(){
         if($(this).prop("checked")){
             tags=$(this).parent().siblings();
             outEdit(tags);
-            $(this).prop("checked",false)
-        }
-    })
+            $(this).prop("checked",false);
+            };
+        });
+
+
+
     }else{
         alert("请进入编辑模式再操作！")
     }
@@ -167,8 +215,15 @@ function cleaning(){
 function SelectBox(ths){
 
     if($("#edit").hasClass("editing")){
+
         tags=$(ths).parent().siblings();
-        doEdit(tags);
+        if($(ths).prop("checked")){
+            doEdit(tags);
+        }else{
+            outEdit(tags);
+        }
+
+
     };
 };
 
@@ -184,3 +239,8 @@ function singleEdit(ths){
 function singleDelete(){
 
 }
+
+
+
+
+

@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^login/', views.login),
     url(r'^register/', views.register),
     url(r'^manager/', views.manager),
+    url(r'^save_data/$', views.save_data),
 ]

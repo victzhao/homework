@@ -9,7 +9,7 @@
     <link href="/static/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <div >
         <div class="up " style="border: solid 1px #9ca7b6">
             <a href="http://www.etiantian.org" target="_blank"><img src="/static/img/logo_small.png" /></a>
         </div>
@@ -66,23 +66,24 @@
 
         <div class="right">
             <!--透明层-->
-            <div class="second-side hide" >透明层</div>
+            <div class="second-side hide" ></div>
             <div id ="hosts_m" class=""  >
                 <div class="select " >
 
                     <input onclick="addMode()" class="btn btn-success" type="button" value="添加" />
                     <input onclick="SelectAll();" class="btn btn-success" type="button" value="全选" />
-                    <input onclick="SelectNo();" class="btn btn-success" type="button" value="全不选" />
+                    <input onclick="SelectNo();" class="btn btn-success" type="button" value="取消" />
                     <input onclick="SelectSide();" class="btn btn-success" type="button" value="反选" />
                     <input id="edit" onclick="editMode(this);" class="btn btn-success" type="button" value="编辑" />
                     <input onclick="Save(this);" class="btn btn-success" type="button" value="保存" />
                     <input  class="btn btn-danger" type="button" value="删除" />
                 </div>
-                <div class="tabletop ">
-                    <table border="0" class="table table-bordered table-hover active" >
+                <div class="tabletop " style="overflow: scroll;">
+                    <table border="1" class="table table-bordered table-hover active" >
                         <thead>
                             <tr  style="background-color: #0095cd">
                                 <th>选择</th>
+                                <th>序号</th>
                                 <th>主机名</th>
                                 <th>ip</th>
                                 <th>端口</th>
@@ -96,18 +97,19 @@
                         <tbody>
                             {% for line in host_info_list %}
                                 <tr>
-                                    <td >
+                                    <td style="width: 30px;">
                                         <input name="line3" type="checkbox" onclick="SelectBox(this);" />
                                     </td>
-                                    <td edit-enable="true">{{ line.hostname }}</td>
-                                    <td edit-enable="true">{{ line.ip }}</td>
-                                    <td edit-enable="true">{{ line.port }}</td>
-                                    <td edit-enable="true">{{ line.cpu }}</td>
-                                    <td edit-enable="true">{{ line.mem }}</td>
-                                    <td edit-enable="true">{{ line.disk }}</td>
-                                    <td edit-enable="true">{{ line.status }}</td>
+                                    <td style="width: 50px;">{{ line.id }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.hostname }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.ip }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.port }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.cpu }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.mem }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.disk }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.status }}</td>
 
-                                    <td>
+                                    <td style="width: 50px">
                                         <span onclick="singleEdit(this);" class="glyphicon glyphicon-edit hover" aria-hidden="true"></span>
                                         <span onclick="singleDelete(this);" class="glyphicon glyphicon-trash hover" aria-hidden="true"></span>
                                     </td>
