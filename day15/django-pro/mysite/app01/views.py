@@ -35,7 +35,7 @@ def register(request):
 
 
 #后台管理系统
-def manager(request):
+def save_host(request):
     if request.method=="POST":
         input_hostname=request.POST["hostname"]
         input_ip=request.POST["ip"]
@@ -46,7 +46,11 @@ def manager(request):
         input_status=request.POST["status"]
         models.hostinfo.objects.create(hostname=input_hostname,ip=input_ip,port=input_port,cpu=input_cpu,mem=input_mem,disk=input_disk,status=input_status)
 
+    return redirect("/manager/")
 
+
+
+def manager(request):
     host_info_list = models.hostinfo.objects.all()
     return render(request, "manager.html",{"host_info_list": host_info_list})
 
@@ -66,3 +70,20 @@ def save_data(request):
 
         # return HttpResponse("ok")
         return HttpResponse(json.dumps(ret))
+
+
+def delete_data(request):
+    if request.method == "POST":
+        ret = {"status": True, "error": ""}
+        try:
+            dataId = json.loads(request.POST["data"])
+            print(dataId)
+            for i in dataId:
+                print(i)
+                models.hostinfo.objects.filter(id=int(i)).delete()
+
+        except Exception as e:
+            ret["status"] = False
+            ret["error"] = str(e)
+        return HttpResponse(json.dumps(ret))
+

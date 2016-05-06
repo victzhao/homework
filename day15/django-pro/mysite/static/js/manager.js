@@ -135,13 +135,14 @@ function Save(ths){
                 modifiedData.push(HostDic)
 
 
-                //开始获取数据
 
             };
 
         });
-
-        $.ajax({
+        //判断是否有选中
+        count = modifiedData.length;
+        if(count!==0){
+            $.ajax({
             url:"/save_data/",
             type:"POST",
             tradition:true,
@@ -149,13 +150,16 @@ function Save(ths){
             success:function(arg){
                 var callback= $.parseJSON(arg);
                 if (callback.status){
-                    alert("成功");
+                    alert("添加记录成功");
                 }else{
                     alert(callback.error);
-                }
+                };
             }
-        });
-        //加入name属性完成
+            });
+        }else{
+            alert("请编辑后再保存！")
+        }
+
 
 
 
@@ -239,6 +243,45 @@ function singleEdit(ths){
 function singleDelete(){
 
 }
+
+
+function Delete(ths){
+    if($(ths).prev().prev().hasClass("editing")){
+        alert("请保存后再删除！")
+    }else{
+        dataDelete = []
+        $(".tabletop input:checkbox ").each(function(){
+            if($(this).prop("checked")){
+                var DleteId = $(this).parent().next().text();
+                dataDelete.push(DleteId);
+            };
+        });
+        if(dataDelete.length !==0){
+            count=dataDelete.length
+            msg='确认删除这' + count + '条记录吗？'
+            if (confirm(msg)){
+                $.ajax({
+                    type: "POST",
+                    url: "/delete_data/",
+                    data: {data:JSON.stringify(dataDelete)},
+                    tradition: true,
+                    success: function(arg){
+                        var callback= $.parseJSON(arg);
+                        if (callback.status){
+                            alert("删除记录成功");
+                            //
+                        }else{
+                            alert(callback.error);
+                        };
+                    }
+                });
+            }
+        }else{
+            alert("请选中后再删除！")
+        }
+    }
+}
+
 
 
 

@@ -76,7 +76,7 @@
                     <input onclick="SelectSide();" class="btn btn-success" type="button" value="反选" />
                     <input id="edit" onclick="editMode(this);" class="btn btn-success" type="button" value="编辑" />
                     <input onclick="Save(this);" class="btn btn-success" type="button" value="保存" />
-                    <input  class="btn btn-danger" type="button" value="删除" />
+                    <input onclick="Delete(this);" class="btn btn-danger" type="button" value="删除" />
                 </div>
                 <div class="tabletop " style="overflow: scroll;">
                     <table border="1" class="table table-bordered table-hover active" >
@@ -129,7 +129,7 @@
             </div>
             <!--添加按钮弹出框-->
             <div>
-                <form action="/manager/" method="post" id="add" class="input_floors hide">
+                <form action="/save-host/" method="post" id="add" class="input_floors hide">
                     <p style="text-align: right">主机名:<input type="text" name="hostname"></p>
                     <p style="text-align: right">IP地址:<input type="text" name="ip"></p>
                     <p style="text-align: right">端口号:<input type="text" name="port"></p>
