@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cd8cc53-e991-4091-8e46-b17c60765953" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/tests.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app02/views.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/apps.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/migrations/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/tests.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app03/views.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/db.sqlite3" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/app01/views.py" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/app01/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/mysite/settings.py" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/mysite/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/mysite/urls.py" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/mysite/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/static/js/manager.js" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/static/js/manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/day15/django-pro/mysite/templates/manager.html" afterPath="$PROJECT_DIR$/day15/django-pro/mysite/templates/manager.html" />
     </list>
     <ignored path="homework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +51,8 @@
       <file leaf-file-name="manager.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/templates/manager.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5906149">
-              <caret line="105" column="79" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="79" />
+            <state vertical-scroll-proportion="0.7022654">
+              <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#form#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#form#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -86,8 +71,18 @@
         <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/static/js/manager.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.766666">
-              <caret line="271" column="30" selection-start-line="271" selection-start-column="30" selection-end-line="271" selection-end-column="30" />
-              <folding />
+              <caret line="273" column="30" selection-start-line="273" selection-start-column="30" selection-end-line="273" selection-end-column="30" />
+              <folding>
+                <marker date="1462759681468" expanded="true" signature="2705:4049" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="2748:4049" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="2862:3757" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="2904:3745" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="3836:4049" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="3857:4049" placeholder="{&quot;url&quot;: &quot;/save_data/&quot;...}" />
+                <marker date="1462759681468" expanded="true" signature="4031:4049" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="5644:5808" placeholder="{...}" />
+                <marker date="1462759681468" expanded="true" signature="5644:5810" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,8 +90,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/app01/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.733334">
-              <caret line="87" column="42" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="42" />
+            <state vertical-scroll-proportion="-27.8">
+              <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -651,7 +646,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27292112" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1100,8 +1095,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/app01/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.733334">
-          <caret line="87" column="42" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="42" />
+        <state vertical-scroll-proportion="-27.8">
+          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -1111,15 +1106,25 @@
     <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/static/js/manager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.766666">
-          <caret line="271" column="30" selection-start-line="271" selection-start-column="30" selection-end-line="271" selection-end-column="30" />
-          <folding />
+          <caret line="273" column="30" selection-start-line="273" selection-start-column="30" selection-end-line="273" selection-end-column="30" />
+          <folding>
+            <marker date="1462759681468" expanded="true" signature="2705:4049" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="2748:4049" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="2862:3757" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="2904:3745" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="3836:4049" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="3857:4049" placeholder="{&quot;url&quot;: &quot;/save_data/&quot;...}" />
+            <marker date="1462759681468" expanded="true" signature="4031:4049" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="5644:5808" placeholder="{...}" />
+            <marker date="1462759681468" expanded="true" signature="5644:5810" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/day15/django-pro/mysite/templates/manager.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5906149">
-          <caret line="105" column="79" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="79" />
+        <state vertical-scroll-proportion="0.7022654">
+          <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#p#0;n#form#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#form#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
