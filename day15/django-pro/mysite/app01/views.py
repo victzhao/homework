@@ -88,5 +88,6 @@ def delete_data(request):
             ret["error"] = str(e)
         return HttpResponse(json.dumps(ret))
 
-def default(request):
-    return  render(request, "404.html")
+def test(request):
+    print(test)
+    return render(request,"child.html")

@@ -107,7 +107,11 @@
                                     <td edit-enable="true" style="width: 100px;">{{ line.cpu }}</td>
                                     <td edit-enable="true" style="width: 50px;">{{ line.mem }}</td>
                                     <td edit-enable="true" style="width: 50px;">{{ line.disk }}</td>
-                                    <td edit-enable="true" style="width: 50px;">{{ line.status }}</td>
+                                    {% if line.status == "在线" %}
+                                        <td class="green-c" edit-enable="true" style="width: 50px;">{{ line.status }}</td>
+                                    {% else %}
+                                        <td class="red-c" edit-enable="true" style="width: 50px;">{{ line.status }}</td>
+                                    {% endif %}
 
                                     <td style="width: 50px">
                                         <span onclick="singleEdit(this);" class="glyphicon glyphicon-edit hover" aria-hidden="true"></span>
