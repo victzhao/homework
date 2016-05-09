@@ -60,11 +60,13 @@ def save_data(request):
         ret = {"status": True, "error": ""}
         try:
             RecData = json.loads(request.POST["data"])
+            print(RecData)
             for i in RecData:
                 dataId = int(i["id"])
                 models.hostinfo.objects.filter(id=dataId).update(hostname=i["hostname"], ip=i["ip"], port=i["port"], cpu=i["cpu"], mem=i["mem"], disk=i["disk"], status=i["status"])
 
         except Exception as e:
+            print(e)
             ret["status"] = False
             ret["error"] = str(e)
 
@@ -77,7 +79,6 @@ def delete_data(request):
         ret = {"status": True, "error": ""}
         try:
             dataId = json.loads(request.POST["data"])
-            print(dataId)
             for i in dataId:
                 print(i)
                 models.hostinfo.objects.filter(id=int(i)).delete()
@@ -87,3 +88,5 @@ def delete_data(request):
             ret["error"] = str(e)
         return HttpResponse(json.dumps(ret))
 
+def default(request):
+    return  render(request, "404.html")
