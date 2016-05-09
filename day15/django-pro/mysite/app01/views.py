@@ -90,4 +90,4 @@ def delete_data(request):
 
 def test(request):
     print(test)
-    return render(request,"child.html")
+    return render(request,"index.html")

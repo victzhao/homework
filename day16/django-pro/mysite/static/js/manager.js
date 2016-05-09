@@ -209,16 +209,37 @@ function cancle(){
 
 function saveRecord(){
     flag=true;
+    AuthorDic = {};
     $("#add input:text").each(function(){
         if(!$(this).val()){
             $(this).addClass("waring")
             flag =  false;
         }else{
             $(this).removeClass("waring")
+            AuthorDic[$(this).attr("name")] =  $(this).val()
+
         }
     })
-    return flag;
+    if (flag){
+        $.ajax({
+        url:"/CreateAuthor/",
+        type:"POST",
+        tradition:true,
+        data: {data:JSON.stringify(AuthorDic)},
+        success:function(arg){
+            var callback= $.parseJSON(arg);
+            if (callback.status){
+                alert("添加成功！");
+                $("#add").addClass("hide");
+                $(".second-side").addClass("hide");
+            }else{
+                alert(callback.error);
+            }
+        }
+    });
+    }
 
+    return flag;
 }
 
 

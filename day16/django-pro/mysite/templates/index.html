@@ -1,0 +1,86 @@
+{% extends "moban.html" %}
+{% block right %}
+<!--图书管理-->
+<div class="right">
+            <!--透明层-->
+            <div class="second-side hide" ></div>
+            <div id ="hosts_m" class=""  >
+                <div class="select " >
+
+                    <input onclick="addMode()" class="btn btn-success" type="button" value="添加" />
+                    <input onclick="SelectAll();" class="btn btn-success" type="button" value="全选" />
+                    <input onclick="SelectNo();" class="btn btn-success" type="button" value="取消" />
+                    <input onclick="SelectSide();" class="btn btn-success" type="button" value="反选" />
+                    <input id="edit" onclick="editMode(this);" class="btn btn-success" type="button" value="编辑" />
+                    <input onclick="Save(this);" class="btn btn-success" type="button" value="保存" />
+                    <input onclick="Delete(this);" class="btn btn-danger" type="button" value="删除" />
+                </div>
+                <div class="tabletop " style="overflow: scroll;">
+                    <table border="1" class="table table-bordered table-hover active" >
+                        <thead>
+                            <tr  style="background-color: #0095cd">
+                                <th>选择</th>
+                                <th>序号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年龄</th>
+                                <th>邮箱</th>
+                                <th>手机号</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line in dataDic %}
+                                <tr>
+                                    <td style="width: 30px;">
+                                        <input name="line3" type="checkbox" onclick="SelectBox(this);" />
+                                    </td>
+                                    <td style="width: 50px;">{{ line.id }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.name }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.gender }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.age }}</td>
+                                    <td edit-enable="true" style="width: 100px;">{{ line.email }}</td>
+                                    <td edit-enable="true" style="width: 50px;">{{ line.mobile }}</td>
+                                    <td style="width: 50px">
+                                        <span onclick="singleEdit(this);" class="glyphicon glyphicon-edit hover" aria-hidden="true"></span>
+                                        <span onclick="singleDelete(this);" class="glyphicon glyphicon-trash hover" aria-hidden="true"></span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+            <!--添加作者按钮弹出框-->
+            <div>
+                <form  id="add" class="input_floors hide">
+                    <p style="text-align: right">姓名:<input type="text" name="name"></p>
+                    <p style="text-align: right">性别:<input type="text" name="gender"></p>
+                    <p style="text-align: right">年龄:<input type="text" name="age"></p>
+                    <p style="text-align: right">邮箱:<input type="text" name="email"></p>
+                    <p style="text-align: right">手机号:<input type="text" name="mobile"></p>
+                    <div style="width: 400px; height: 10px ;text-align: center;padding-top: 20px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  class="btn btn-success" type="button"  value="保存" onclick="return saveRecord();">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="btn btn-success" type="button"  value="重置" onclick="cleaning();">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="btn btn-success" type="button"  value="取消" onclick="cancle(this);">
+                    </div>
+                </form>
+            </div>
+        </div>
+<!--作者管理-->
+<div class="right hide">
+</div>
+<!--出版社管理-->
+<div class="right hide">
+</div>
+
+{% endblock %}
