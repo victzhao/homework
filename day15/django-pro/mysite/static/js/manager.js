@@ -148,7 +148,6 @@ function Save(ths){
             tradition:true,
             data: {data:JSON.stringify(modifiedData)},
             success:function(arg){
-                console.log("添加记录开始")
                 var callback= $.parseJSON(arg);
                 if (callback.status){
                     alert("添加记录成功");
@@ -234,7 +233,6 @@ function SelectBox(ths){
 
 function singleEdit(ths){
     if(!$("#edit").hasClass("editing")){
-        $(".tabletop input:checkbox ").prop("checked",false)
         $(ths).parent().siblings().first().children().prop("checked",true)
         $("#edit").addClass("editing")
         doEdit($(ths).parent().siblings());

@@ -24,6 +24,4 @@ urlpatterns = [
     url(r'^save_data/$', views.save_data),
     url(r'^delete_data/$', views.delete_data),
     url(r'^save-host/$', views.save_host),
-    # url(r'^$', views.default),
-    # url(r'.*$', views.default),
 ]
