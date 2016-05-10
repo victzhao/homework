@@ -232,6 +232,16 @@ function saveRecord(){
                 alert("添加成功！");
                 $("#add").addClass("hide");
                 $(".second-side").addClass("hide");
+                here = $(".tabletop table tbody ").children().last()
+                $(here).clone().insertAfter($(here))
+                console.log($(".tabletop table tbody ").children().last().children().eq(2).val())
+                $(".tabletop table tbody ").children().last().children().eq(2).val(callback.id)
+                $(".tabletop table tbody ").children().last().children().eq(3).val(AuthorDic.name)
+                $(".tabletop table tbody ").children().last().children().eq(4).val(AuthorDic.gender)
+                $(".tabletop table tbody ").children().last().children().eq(5).val(AuthorDic.age)
+                $(".tabletop table tbody ").children().last().children().eq(6).val(AuthorDic.email)
+                $(".tabletop table tbody ").children().last().children().eq(7).val(AuthorDic.mobile)
+
             }else{
                 alert(callback.error);
             }
@@ -288,6 +298,7 @@ function Delete(ths){
             if($(this).prop("checked")){
                 var DleteId = $(this).parent().next().text();
                 dataDelete.push(DleteId);
+                console.log(DleteId)
             };
         });
         if(dataDelete.length !==0){
@@ -296,14 +307,19 @@ function Delete(ths){
             if (confirm(msg)){
                 $.ajax({
                     type: "POST",
-                    url: "/delete_data/",
+                    url: "/DeleteAuthor/",
                     data: {data:JSON.stringify(dataDelete)},
                     tradition: true,
                     success: function(arg){
                         var callback= $.parseJSON(arg);
                         if (callback.status){
                             alert("删除记录成功");
-                            //
+                            //在页面上删除刚才的记录
+                            $(".tabletop input:checkbox ").each(function(){
+                                if($(this).prop("checked")){
+                                    $(this).parent().parent().remove()
+                                }
+                            })
                         }else{
                             alert(callback.error);
                         };

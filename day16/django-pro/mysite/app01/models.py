@@ -22,3 +22,4 @@ class Publisher(models.Model):
 class Book(models.Model):
     pass
 
+
