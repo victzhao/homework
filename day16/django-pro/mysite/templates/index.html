@@ -33,12 +33,16 @@
         <!--//添加记录-->
         <div>
             <form method="post" action="/AddAuthor/">
-                姓名:<input type="text" name="name">
-                性别:<input type="text" name="gender">
-                年龄:<input type="text" name="age">
-                邮箱:<input type="text" name="email">
-                手机:<input type="text" name="mobile">
-                <input type="submit" value="保存">
+                姓名:<input type="text" name="name"/>
+                性别:
+                <select name="gender"  style="width: 100px;">
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+                年龄:<input type="text" name="age"/>
+                邮箱:<input type="text" name="email"/>
+                手机:<input type="text" name="mobile"/>
+                <input type="submit" value="保存"/>
             </form>
         </div>
         </div>
@@ -96,7 +100,12 @@
                 {% for book in BookDic %}
                 <tr>
                     <td>{{ book.name }}</td>
-                    <td>{{ book.author.name }}</td>
+                    <td>
+                        {% for i in book.author.all %}
+                        <span>{{ i }},</span>
+                        {% endfor %}
+                        <span></span>
+                    </td>
                     <td>{{ book.publisher.name }}</td>
                     <td>{{ book.publishtime }}</td>
                     <td>{{ book.ctime }}</td>
@@ -109,9 +118,21 @@
         <div>
             <form method="post" action="/AddBook/">
                 名称:<input type="text" name="name">
-                作者:<input type="text" name="author">
-                出版社:<input type="text" name="publisher">
-                出版日期:<input type="text" name="publishertime">
+                作者:
+                    <select multiple="multiple" name = "author_ids">
+                        {% for aus in  AuthorDic %}
+                        <option value={{ aus.id }}>{{  aus.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                出版社:
+                    <select name = "publisher_id">
+                        {% for pubs in  PublisherDic %}
+                        <option value={{ pubs.id }}>{{  pubs.name }}</option>
+                        {% endfor %}
+                    </select>
+                出版日期:<input type="date" name="publishertime">
+
                 <input type="submit" value="保存">
             </form>
         </div>

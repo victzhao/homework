@@ -11,34 +11,44 @@ def BookManager(request):
     PublisherDic = models.Publisher.objects.all()
     return render(request, "index.html", {"BookDic": BookDic, "AuthorDic": AuthorDic, "PublisherDic": PublisherDic})
 
-def AuthManager(request):
-    return render(request, "index.html")
-
-def CreateAuthor(request):
+def AddAuthor(request):
     if request.method == "POST":
-        ret = {"status": True, "error": "", "id": ""}
-        RecvData = json.loads(request.POST.get("data"))
+        input_name = request.POST["name"]
 
-        try:
-            models.Author.objects.create(**RecvData)
-            AddId = models.Author.objects.filter(**RecvData).values("id")[0]["id"]
-            ret["id"]=AddId
-        except Exception as e:
-            ret["status"] = False
-            ret["error"] = str(e)
-        redirect("/CreateAuthor/")
-        return HttpResponse(json.dumps(ret))
-def DeleteAuthor(request):
+        if request.POST["gender"] == "男":
+            input_gender = 0
+        input_age = int(request.POST["age"])
+        input_email = request.POST["email"]
+        input_mobile = request.POST["mobile"]
+        models.Author.objects.create(name=input_name, gender = input_gender, age = input_age, email = input_email, mobile=input_mobile)
+        return redirect("/")
+
+
+def AddPublisher(request):
     if request.method == "POST":
-        ret = {"status": True, "error": ""}
-        try:
-            RecvData = json.loads(request.POST.get("data"))
-            for i in RecvData:
-                models.Author.objects.filter(id=int(i)).delete()
-        except Exception as e:
-            ret["status"] = False
-            ret["error"] = str(e)
-        return HttpResponse(json.dumps(ret))
+        input_name = request.POST["name"]
+        input_address = request.POST["address"]
+        input_province = request.POST["province"]
+        input_city = request.POST["city"]
+        input_website = request.POST["website"]
+        models.Publisher.objects.create(name=input_name, address=input_address, province=input_province, city=input_city, website=input_website)
+        return redirect("/")
 
-def PublsherManager(request):
-    return render(request, "index.html")
+
+def AddBook(request):
+    if request.method =="POST":
+        input_name = request.POST.get("name")
+        input_publisher_id = request.POST.get("publisher_id")
+        print(input_publisher_id)
+        input_publishertime = request.POST.get("publishertime")
+        input_author_ids = request.POST.get("author_ids")
+        print(input_author_ids)
+        new_book=models.Book(
+            name=input_name,
+            publisher_id=input_publisher_id,
+            publishtime=input_publishertime,
+        )
+        new_book.save()
+        new_book.author.add(*input_author_ids)
+        return redirect("/")
+
