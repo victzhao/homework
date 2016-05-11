@@ -6,9 +6,10 @@ import json
 # Create your views here.
 
 def BookManager(request):
-    dataDic=models.Author.objects.all()
-    print(dataDic)
-    return render(request, "index.html", {"dataDic": dataDic})
+    BookDic = models.Book.objects.all()
+    AuthorDic = models.Author.objects.all()
+    PublisherDic = models.Publisher.objects.all()
+    return render(request, "index.html", {"BookDic": BookDic, "AuthorDic": AuthorDic, "PublisherDic": PublisherDic})
 
 def AuthManager(request):
     return render(request, "index.html")

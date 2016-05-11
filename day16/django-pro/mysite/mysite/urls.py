@@ -19,7 +19,5 @@ from app01 import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^$', views.BookManager),
-	url(r'^CreateAuthor/$', views.CreateAuthor),
-	url(r'^DeleteAuthor/$', views.DeleteAuthor),
 
 ]
