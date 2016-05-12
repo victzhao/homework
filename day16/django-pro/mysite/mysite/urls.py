@@ -22,4 +22,5 @@ urlpatterns = [
 	url(r'^AddAuthor/$', views.AddAuthor),
 	url(r'^AddPublisher/$', views.AddPublisher),
 	url(r'^AddBook/$', views.AddBook),
+	url(r'^SearchBook/$', views.SearchBook),
 ]

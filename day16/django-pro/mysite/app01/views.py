@@ -41,7 +41,7 @@ def AddBook(request):
         input_publisher_id = request.POST.get("publisher_id")
         print(input_publisher_id)
         input_publishertime = request.POST.get("publishertime")
-        input_author_ids = request.POST.get("author_ids")
+        input_author_ids = request.POST.getlist("author_ids")
         print(input_author_ids)
         new_book=models.Book(
             name=input_name,
@@ -52,3 +52,8 @@ def AddBook(request):
         new_book.author.add(*input_author_ids)
         return redirect("/")
 
+def SearchBook(request):
+    if request.method=="POST":
+        print(request.POST)
+        SearchBookDic="False"
+        return render(request, "index.html", {"SearchBookDic": SearchBookDic})

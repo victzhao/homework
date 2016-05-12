@@ -1,0 +1,10 @@
+.bordors{
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: solid 1px #868b6b;
+    background-color: #bbbbbb;
+}
+.hide{
+    display: none;
+}

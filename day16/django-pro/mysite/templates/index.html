@@ -4,139 +4,184 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="/static/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="/static/css/commons.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>图书管理系统</h1>
-
-    <div style="border: solid 1px red">
-        <h2>作者管理</h2>
-        <div>
-            <table border="1" class="table table-bordered table-hover active">
-                <tr style="background-color: #0095cd">
-                    <th>姓名</th>
-                    <th>性别</th>
-                    <th>年龄</th>
-                    <th>邮箱</th>
-                    <th>手机</th>
-                </tr>
-                {% for author in AuthorDic %}
-                <tr>
-                    <td>{{ author.name }}</td>
-                    <td>{{ author.get_gender_display }}</td>
-                    <td>{{ author.age }}</td>
-                    <td>{{ author.email }}</td>
-                    <td>{{ author.mobile }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <!--//添加记录-->
-        <div>
-            <form method="post" action="/AddAuthor/">
-                姓名:<input type="text" name="name"/>
-                性别:
-                <select name="gender"  style="width: 100px;">
-                    <option>男</option>
-                    <option>女</option>
-                </select>
-                年龄:<input type="text" name="age"/>
-                邮箱:<input type="text" name="email"/>
-                手机:<input type="text" name="mobile"/>
-                <input type="submit" value="保存"/>
-            </form>
-        </div>
-        </div>
+    <div style="border: solid grey 1px;padding: 10px;border-radius: 10px;"><h1>图书管理系统</h1></div>
+    <div style="float: left;width: 10%">
+        <ul>
+            <li id="authorm" onclick="authorm();">作者管理</li>
+            <li id="publisherm" onclick="publisherm();">出版社管理</li>
+            <li id="bookm" onclick="bookm();">图书管理</li>
+        </ul>
     </div>
-    <div style="border: solid 1px red">
-        <!--出版社管理-->
-
-        <h2>出版社管理</h2>
-        <div>
-            <table border="1" class="table table-bordered table-hover active">
-                <tr style="background-color: #0095cd">
-                    <th>名称</th>
-                    <th>地址</th>
-                    <th>省份</th>
-                    <th>城市</th>
-                    <th>网站</th>
-                </tr>
-                {% for publisher in PublisherDic %}
-                <tr>
-                    <td>{{ publisher.name }}</td>
-                    <td>{{ publisher.address }}</td>
-                    <td>{{ publisher.province }}</td>
-                    <td>{{ publisher.city }}</td>
-                    <td>{{ publisher.website }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <!--//添加记录-->
-        <div>
-            <form method="post" action="/AddPublisher/">
-                名称:<input type="text" name="name">
-                地址:<input type="text" name="address">
-                省份:<input type="text" name="province">
-                城市:<input type="text" name="city">
-                网站:<input type="text" name="website">
-                <input type="submit" value="保存">
-            </form>
-        </div>
-    </div >
-    <div style="border: solid 1px red">
-        <!--图书管理-->
-
-        <h2>图书管理</h2>
-        <div>
-            <table border="1" class="table table-bordered table-hover active">
-                <tr style="background-color: #0095cd">
-                    <th>名称</th>
-                    <th>作者</th>
-                    <th>出版社</th>
-                    <th>出版日期</th>
-                    <th>录入日期</th>
-                    <th>修改日期</th>
-                </tr>
-                {% for book in BookDic %}
-                <tr>
-                    <td>{{ book.name }}</td>
-                    <td>
-                        {% for i in book.author.all %}
-                        <span>{{ i }},</span>
-                        {% endfor %}
-                        <span></span>
-                    </td>
-                    <td>{{ book.publisher.name }}</td>
-                    <td>{{ book.publishtime }}</td>
-                    <td>{{ book.ctime }}</td>
-                    <td>{{ book.mtime }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <!--//添加记录-->
-        <div>
-            <form method="post" action="/AddBook/">
-                名称:<input type="text" name="name">
-                作者:
-                    <select multiple="multiple" name = "author_ids">
-                        {% for aus in  AuthorDic %}
-                        <option value={{ aus.id }}>{{  aus.name }}</option>
-                        {% endfor %}
+    <div id="right" style="float: left;width: 90%;border: solid grey 1px;padding: 10px;">
+        <div id="author" class="bordors" >
+            <h2>作者管理</h2>
+            <div >
+                <table border="1" class="table table-bordered table-hover active">
+                    <tr style="background-color: #0095cd">
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>邮箱</th>
+                        <th>手机</th>
+                    </tr>
+                    {% for author in AuthorDic %}
+                    <tr>
+                        <td>{{ author.name }}</td>
+                        <td>{{ author.get_gender_display }}</td>
+                        <td>{{ author.age }}</td>
+                        <td>{{ author.email }}</td>
+                        <td>{{ author.mobile }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!--//添加记录-->
+            <div>
+                <form method="post" action="/AddAuthor/">
+                    姓名:<input type="text" name="name"/>
+                    性别:
+                    <select name="gender"  style="width: 100px;">
+                        <option>男</option>
+                        <option>女</option>
                     </select>
+                    年龄:<input type="text" name="age"/>
+                    邮箱:<input type="text" name="email"/>
+                    手机:<input type="text" name="mobile"/>
+                    <input type="submit" value="保存"/>
+                </form>
+            </div>
+            </div>
+        <div id="publisher" class="bordors hide">
+            <!--出版社管理-->
 
-                出版社:
-                    <select name = "publisher_id">
-                        {% for pubs in  PublisherDic %}
-                        <option value={{ pubs.id }}>{{  pubs.name }}</option>
-                        {% endfor %}
-                    </select>
-                出版日期:<input type="date" name="publishertime">
+            <h2>出版社管理</h2>
+            <div>
+                <table border="1" class="table table-bordered table-hover active">
+                    <tr style="background-color: #0095cd">
+                        <th>名称</th>
+                        <th>地址</th>
+                        <th>省份</th>
+                        <th>城市</th>
+                        <th>网站</th>
+                    </tr>
+                    {% for publisher in PublisherDic %}
+                    <tr>
+                        <td>{{ publisher.name }}</td>
+                        <td>{{ publisher.address }}</td>
+                        <td>{{ publisher.province }}</td>
+                        <td>{{ publisher.city }}</td>
+                        <td>{{ publisher.website }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!--//添加记录-->
+            <div>
+                <form method="post" action="/AddPublisher/">
+                    名称:<input type="text" name="name">
+                    地址:<input type="text" name="address">
+                    省份:<input type="text" name="province">
+                    城市:<input type="text" name="city">
+                    网站:<input type="text" name="website">
+                    <input type="submit" value="保存">
+                </form>
+            </div>
+        </div >
+        <div id="book" class="bordors hide">
+            <!--图书管理-->
 
-                <input type="submit" value="保存">
-            </form>
-        </div>
-    </div >
+            <h2>图书管理</h2>
+            <div>
+                <table border="1" class="table table-bordered table-hover active">
+                    <tr style="background-color: #0095cd">
+                        <th>名称</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>出版日期</th>
+                        <th>录入日期</th>
+                        <th>修改日期</th>
+                    </tr>
+                    {% for book in BookDic %}
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>
+                            {% for i in book.author.all %}
+                            <span>{{ i }},</span>
+                            {% endfor %}
+                            <span></span>
+                        </td>
+                        <td>{{ book.publisher.name }}</td>
+                        <td>{{ book.publishtime }}</td>
+                        <td>{{ book.ctime }}</td>
+                        <td>{{ book.mtime }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!--//添加记录-->
+            <div>
+                <form method="post" action="/AddBook/">
+                    名称:<input type="text" name="name">
+                    作者:
+                        <select multiple="multiple" name = "author_ids">
+                            {% for aus in  AuthorDic %}
+                            <option value={{ aus.id }}>{{  aus.name }}</option>
+                            {% endfor %}
+                        </select>
 
+                    出版社:
+                        <select name = "publisher_id">
+                            {% for pubs in  PublisherDic %}
+                            <option value={{ pubs.id }}>{{  pubs.name }}</option>
+                            {% endfor %}
+                        </select>
+                    出版日期:<input type="date" name="publishertime">
+
+                    <input type="submit" value="保存">
+                </form>
+            </div>
+            <h2>图书搜索</h2>
+            <!--//添加记录-->
+            <div>
+                <form method="post" action="/SearchBook/">
+                    名称:<input type="text" name="name">
+                    <input type="submit" value="搜索">
+                </form>
+            </div>
+            <div>
+                <table border="1" class="table table-bordered table-hover active">
+                    <tr style="background-color: #0095cd">
+                        <th>名称</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>出版日期</th>
+                        <th>录入日期</th>
+                        <th>修改日期</th>
+                    </tr>
+                    {% for book in BookDic %}
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>
+                            {% for i in book.author.all %}
+                            <span>{{ i }},</span>
+                            {% endfor %}
+                            <span></span>
+                        </td>
+                        <td>{{ book.publisher.name }}</td>
+                        <td>{{ book.publishtime }}</td>
+                        <td>{{ book.ctime }}</td>
+                        <td>{{ book.mtime }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div >
+
+    </div>
+<script src="/static/js/index.js"></script>
+<script src="/static/js/jquery-2.2.3.js"></script>
 </body>
 </html>
