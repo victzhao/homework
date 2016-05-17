@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="python" />
     <orderEntry type="module" module-name="autopre" />
+    <orderEntry type="module" module-name="minxinyunwei" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
