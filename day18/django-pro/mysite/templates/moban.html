@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>老男孩运维管理系统</title>
+    <link href="/static/css/commons.css" rel="stylesheet" />
+    <link href="/static/css/manager.css" rel="stylesheet" />
+    <link href="/static/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div >
+        <div class="up " style="border: solid 1px #9ca7b6">
+            <a href="http://www.etiantian.org" target="_blank"><img src="/static/img/logo_small.png" /></a>
+        </div>
+        <div class="left">
+            <ul class="nav nav-pills nav-stacked">
+
+                <li role="presentation" class="active">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+                        &nbsp;&nbsp;主机管理
+                    </a>
+                </li>
+                <li role="presentation" >
+
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        &nbsp;&nbsp;用户管理
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        &nbsp;&nbsp;监控管理
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                        &nbsp;&nbsp;网络设备
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        &nbsp;&nbsp;域名解析
+                    </a>
+                </li>
+                <li role="presentation"  >
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        &nbsp;&nbsp;备案管理
+                    </a>
+                </li>
+
+                <li role="presentation">
+                    <a href="#">
+                        <span  class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        &nbsp;&nbsp;消息中心
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="right">
+            {% block right %}
+
+            {% endblock %}
+        </div>
+
+
+
+
+
+    </div>
+    <script src="/static/js/jquery-2.2.3.js"></script>
+    <script src="/static/js/manager.js"></script>
+
+</body>
+</html>
